@@ -1,0 +1,31 @@
+{
+  "name": "ts-node-starter",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npm run format && npm run lint && npm run build-ts",
+    "build-ts": "tsc",
+    "clean": "rm -r dist",
+    "format": "prettier --write src/**/*.*ts",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
+    "start": "npm run watch",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-node": "nodemon dist/index.js",
+    "watch-ts": "tsc -w"
+  },
+  "author": "Marek.Luszczki",
+  "license": "ISC",
+  "dependencies": {
+    "@types/eslint": "7.2.0",
+    "@types/node": "14.0.23",
+    "@typescript-eslint/eslint-plugin": "3.6.1",
+    "@typescript-eslint/parser": "3.6.1",
+    "eslint": "7.4.0",
+    "prettier": "2.0.5",
+    "typescript": "3.9.6"
+  },
+  "devDependencies": {
+    "concurrently": "5.2.0",
+    "nodemon": "2.0.4"
+  }
+}
